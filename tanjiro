@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>TANJIRO | Chess Portfolio</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins',sans-serif;
+    }
+
+    body{
+      background:#ffffff;
+      color:#111;
+      overflow-x:hidden;
+      position:relative;
+    }
+
+    /* Floating Chess Pieces */
+
+    .floating-piece{
+      position:fixed;
+      color:rgba(0,0,0,0.08);
+      font-size:70px;
+      animation:float 12s linear infinite;
+      z-index:0;
+      user-select:none;
+    }
+
+    .piece1{
+      left:5%;
+      animation-duration:14s;
+    }
+
+    .piece2{
+      left:20%;
+      animation-duration:18s;
+      animation-delay:2s;
+    }
+
+    .piece3{
+      left:40%;
+      animation-duration:12s;
+      animation-delay:1s;
+    }
+
+    .piece4{
+      left:60%;
+      animation-duration:16s;
+      animation-delay:3s;
+    }
+
+    .piece5{
+      left:80%;
+      animation-duration:20s;
+      animation-delay:5s;
+    }
+
+    @keyframes float{
+      0%{
+        transform:translateY(110vh) rotate(0deg);
+      }
+
+      100%{
+        transform:translateY(-120vh) rotate(360deg);
+      }
+    }
+
+    /* Header */
+
+    header{
+      width:100%;
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      background:linear-gradient(135deg,#ffffff,#f3f3f3,#e8e8e8);
+      padding:40px;
+      position:relative;
+      z-index:1;
+    }
+
+    .container{
+      max-width:1200px;
+      width:100%;
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      gap:50px;
+      align-items:center;
+    }
+
+    .left img{
+      width:100%;
+      max-width:400px;
+      border-radius:25px;
+      border:4px solid #ff0000;
+      box-shadow:0 0 30px rgba(255,0,0,0.3);
+    }
+
+    /* Animated Name */
+
+    .animated-title{
+      display:flex;
+      gap:5px;
+      flex-wrap:wrap;
+      margin-bottom:10px;
+    }
+
+    .animated-title span{
+      display:inline-block;
+      font-size:70px;
+      color:#ff0000;
+      font-weight:700;
+      animation:bounce 1.5s infinite;
+    }
+
+    .animated-title span:nth-child(1){ animation-delay:0s; }
+    .animated-title span:nth-child(2){ animation-delay:0.1s; }
+    .animated-title span:nth-child(3){ animation-delay:0.2s; }
+    .animated-title span:nth-child(4){ animation-delay:0.3s; }
+    .animated-title span:nth-child(5){ animation-delay:0.4s; }
+    .animated-title span:nth-child(6){ animation-delay:0.5s; }
+    .animated-title span:nth-child(7){ animation-delay:0.6s; }
+
+    @keyframes bounce{
+
+      0%{
+        transform:translateY(0);
+      }
+
+      25%{
+        transform:translateY(-12px);
+      }
+
+      50%{
+        transform:translateY(0);
+      }
+
+      100%{
+        transform:translateY(0);
+      }
+
+    }
+
+    /* Fade Animation */
+
+    h1,h2,h3,p,a,.card,.title{
+      animation:fadeUp 1s ease forwards;
+    }
+
+    @keyframes fadeUp{
+
+      0%{
+        opacity:0;
+        transform:translateY(30px);
+      }
+
+      100%{
+        opacity:1;
+        transform:translateY(0);
+      }
+
+    }
+
+    .right h2{
+      font-size:28px;
+      margin-bottom:10px;
+      color:#333;
+    }
+
+    .slogan{
+      font-size:22px;
+      color:#111;
+      margin-bottom:20px;
+      letter-spacing:3px;
+      font-weight:600;
+      text-transform:uppercase;
+    }
+
+    .right p{
+      line-height:1.8;
+      color:#444;
+      margin-bottom:30px;
+      max-width:600px;
+    }
+
+    /* Button */
+
+    .btn{
+      display:inline-block;
+      padding:14px 35px;
+      background:#ff0000;
+      color:white;
+      text-decoration:none;
+      border-radius:40px;
+      font-weight:600;
+      transition:0.4s;
+    }
+
+    .btn:hover{
+      background:#111;
+      transform:scale(1.05);
+    }
+
+    /* Sections */
+
+    section{
+      padding:80px 10%;
+      position:relative;
+      z-index:1;
+    }
+
+    .title{
+      text-align:center;
+      margin-bottom:60px;
+    }
+
+    .title h2{
+      font-size:45px;
+      color:#ff0000;
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:30px;
+    }
+
+    .card{
+      background:#fff;
+      padding:30px;
+      border-radius:20px;
+      transition:0.4s;
+      border:1px solid #ddd;
+      box-shadow:0 5px 15px rgba(0,0,0,0.08);
+    }
+
+    .card:hover{
+      transform:translateY(-10px);
+      box-shadow:0 10px 25px rgba(255,0,0,0.2);
+    }
+
+    .card h3{
+      color:#ff0000;
+      margin-bottom:15px;
+      font-size:24px;
+    }
+
+    .card p{
+      color:#555;
+      line-height:1.7;
+    }
+
+    /* Moral Section */
+
+    .moral-section{
+      position:relative;
+      padding:120px 20px;
+      text-align:center;
+      overflow:hidden;
+      background:linear-gradient(135deg,#fff0f0,#ffffff);
+    }
+
+    .moral-section h2{
+      font-size:50px;
+      color:#ff0000;
+      margin-bottom:20px;
+      position:relative;
+      z-index:2;
+    }
+
+    .moral-section p{
+      font-size:20px;
+      color:#444;
+      position:relative;
+      z-index:2;
+    }
+
+    /* Floating Hearts */
+
+    .floating-heart{
+      position:absolute;
+      color:rgba(255,0,0,0.2);
+      font-size:60px;
+      animation:heartFloat 8s linear infinite;
+    }
+
+    .heart1{
+      left:10%;
+      animation-duration:7s;
+    }
+
+    .heart2{
+      left:30%;
+      animation-duration:9s;
+      animation-delay:1s;
+    }
+
+    .heart3{
+      left:50%;
+      animation-duration:6s;
+      animation-delay:2s;
+    }
+
+    .heart4{
+      left:70%;
+      animation-duration:10s;
+      animation-delay:3s;
+    }
+
+    .heart5{
+      left:90%;
+      animation-duration:8s;
+      animation-delay:4s;
+    }
+
+    @keyframes heartFloat{
+
+      0%{
+        transform:translateY(120px) scale(0.5);
+        opacity:0;
+      }
+
+      50%{
+        opacity:1;
+      }
+
+      100%{
+        transform:translateY(-250px) scale(1.5);
+        opacity:0;
+      }
+
+    }
+
+    /* Footer */
+
+    footer{
+      text-align:center;
+      padding:30px;
+      background:#f5f5f5;
+      color:#555;
+      border-top:1px solid #ddd;
+      position:relative;
+      z-index:1;
+    }
+
+    .social{
+      margin-top:20px;
+    }
+
+    .social a{
+      color:#111;
+      text-decoration:none;
+      font-size:18px;
+      transition:0.3s;
+    }
+
+    .social a:hover{
+      color:#ff0000;
+    }
+
+    /* Heart Click Animation */
+
+    .touch-effect{
+      position:absolute;
+      color:#ff0000;
+      font-size:25px;
+      pointer-events:none;
+      transform:translate(-50%, -50%);
+      animation:heartAnim 1s ease-out forwards;
+      z-index:9999;
+    }
+
+    @keyframes heartAnim{
+
+      0%{
+        opacity:1;
+        transform:translate(-50%, -50%) scale(0.5);
+      }
+
+      100%{
+        opacity:0;
+        transform:translate(-50%, -120px) scale(1.8);
+      }
+
+    }
+
+    /* Mobile */
+
+    @media(max-width:768px){
+
+      .animated-title span{
+        font-size:50px;
+      }
+
+      .right h2{
+        font-size:22px;
+      }
+
+      .slogan{
+        font-size:18px;
+      }
+
+      .floating-piece{
+        font-size:45px;
+      }
+
+      .moral-section h2{
+        font-size:35px;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <!-- Floating Chess Pieces -->
+
+  <div class="floating-piece piece1">♛</div>
+  <div class="floating-piece piece2">♞</div>
+  <div class="floating-piece piece3">♜</div>
+  <div class="floating-piece piece4">♝</div>
+  <div class="floating-piece piece5">♚</div>
+
+  <!-- Header -->
+
+  <header>
+
+    <div class="container">
+
+      <div class="left">
+        <img src="https://images.unsplash.com/photo-1529699211952-734e80c4d42b?q=80&w=1000&auto=format&fit=crop" alt="Chess">
+      </div>
+
+      <div class="right">
+
+        <h1 class="animated-title">
+          <span>T</span>
+          <span>A</span>
+          <span>N</span>
+          <span>J</span>
+          <span>I</span>
+          <span>R</span>
+          <span>O</span>
+        </h1>
+
+        <h2>Professional Chess Content Creator</h2>
+
+        <h3 class="slogan">GOOFYGEN PAYALUGA</h3>
+
+        <p>
+          Welcome to the official portfolio of TANJIRO —
+          chess strategist, anime editor, and creator behind
+          <b>@chess.with.sukuna</b>.
+        </p>
+
+        <a href="https://www.instagram.com/" target="_blank" class="btn">
+          Visit Instagram
+        </a>
+
+        <div class="social">
+          <a href="https://www.instagram.com/" target="_blank">
+            Instagram : @chess.with.sukuna
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+
+  </header>
+
+  <!-- Bio Data -->
+
+  <section>
+
+    <div class="title">
+      <h2>Bio Data</h2>
+    </div>
+
+    <div class="cards">
+
+      <div class="card">
+        <h3>Name</h3>
+        <p>Tanjiro</p>
+      </div>
+
+      <div class="card">
+        <h3>Mother Name</h3>
+        <p>Kushina Uzumaki</p>
+      </div>
+
+      <div class="card">
+        <h3>Father Name</h3>
+        <p>Minato</p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- Moral Section -->
+
+  <section class="moral-section">
+
+    <div class="floating-heart heart1">❤</div>
+    <div class="floating-heart heart2">❤</div>
+    <div class="floating-heart heart3">❤</div>
+    <div class="floating-heart heart4">❤</div>
+    <div class="floating-heart heart5">❤</div>
+
+    <h2>FOLLOW ME FOR MORE ❤</h2>
+
+    <p>
+      More chess edits, anime vibes, tactical gameplay,
+      and legendary content coming soon.
+    </p>
+
+  </section>
+
+  <!-- Footer -->
+
+  <footer>
+    <p>© 2026 TANJIRO | Chess Portfolio Website</p>
+  </footer>
+
+  <!-- Heart Click Animation -->
+
+  <script>
+
+    document.addEventListener("click", function(e){
+
+      let heart = document.createElement("div");
+
+      heart.classList.add("touch-effect");
+
+      heart.innerHTML = "❤";
+
+      heart.style.left = e.pageX + "px";
+      heart.style.top = e.pageY + "px";
+
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 1000);
+
+    });
+
+  </script>
+
+</body>
+</html>
